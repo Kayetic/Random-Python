@@ -4,6 +4,7 @@
 This repository will be used for small pieces of code, for temporary tasks, usually from computer science
 Currently contains:
  - Function to convert hexadecimal to denary
-
+ - The good 'ol FizzBuzz game
+ - Video downloading script
 
 (More will be added in the future)

@@ -16,6 +16,7 @@ Currently contains:
 
 <h4>FizzBuzz:</h4>
  - Come on, who doesn't know what this does...
+
  - But well, *sigh* here we go again
  - It will output all the digits, from 1 to the inputted one
       - If the current digit is a multiple of 3, it will print out Fizz

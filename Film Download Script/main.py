@@ -6,8 +6,8 @@ print(f"{number_of_lines} to download.")
 
 # Main menu
 
-choice_menu = input("Choose:\n1 - For Youtube videos and playlists\n2 - For video from outside sources\n>>> ")
-if choice_menu == "2":
+choice_menu = input("Choose:\n1 - For video from outside sources\n2 - For Youtube videos and playlists\n>>> ")
+if choice_menu == "1":
     to_go = 0
     while to_go < number_of_lines:
         # nameTemp = input("Enter the name for it: ").replace(" ", "-")
@@ -36,6 +36,6 @@ if choice_menu == "2":
         to_go += 1
         for i in range(len(links)):
             os.system(f'yt-dlp {links[i]} -o "{names[i]}"')
-elif choice_menu == "1":
+if choice_menu == "2":
     ytlink = input("Enter youtube link: ")
     os.system(f'yt-dlp -o "%(title)s.%(ext)s" {ytlink}')

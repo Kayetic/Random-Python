@@ -1,7 +1,10 @@
 import os
 
 to_go = 0
-readingLines = open("filmy.txt", encoding="utf-8").readlines()
+try:
+    readingLines = open("filmy.txt", encoding="utf-8").readlines()
+except FileNotFoundError:
+    print("The 'filmy.txt' file does not exist, please create one.")
 number_of_lines = len(readingLines)
 print(f"{number_of_lines} to download.\n")
 

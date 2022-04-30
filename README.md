@@ -1,7 +1,8 @@
 # Random Python
 <h2>Welcome to random code</h2>
 
-This repository will be used for small pieces of code, for temporary tasks, usually from computer science
+This repository will be used for small pieces of code, for temporary tasks, usually from computer science.
+
 <b>Currently contains:</b>
 
  - Function to convert hexadecimal to denary

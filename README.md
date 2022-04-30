@@ -1,8 +1,9 @@
 # Random Python
-<h2 style="color:#946d68;">Welcome to random code</h2>
+<h2>Welcome to random code</h2>
 
 This repository will be used for small pieces of code, for temporary tasks, usually from computer science
-Currently contains:
+<b>Currently contains:</b>
+
  - Function to convert hexadecimal to denary
  - The good 'ol FizzBuzz game
  - Video downloading script
@@ -14,7 +15,7 @@ Currently contains:
  - Will let you input a hex number (eg. 2A)
  - Uses a dictionary and x16 multiplication to output the denary digit
 
-<h3>FizzBuzz:</h3>
+<h3 id="[1-this-is-my-header](https://github.com/Kayetic/Random-Python/tree/main/Fizz-Buzz)">FizzBuzz:</h3>
 
  - Come on, who doesn't know what this does...
  - But well, *sigh* here we go again
@@ -30,4 +31,3 @@ Currently contains:
  - Script parses line by line and downloads each link, with the link and title
  - Uses youtube-dl and os module for the terminal
 
-<p>Some Markdown text with <span style="color:blue">some <em>blue</em> text</span>.</p>

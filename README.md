@@ -1,5 +1,5 @@
 # Random Python
-<h2>Welcome to random code</h2>
+<h2 style="color:#946d68;">Welcome to random code</h2>
 
 This repository will be used for small pieces of code, for temporary tasks, usually from computer science
 Currently contains:
@@ -29,3 +29,5 @@ Currently contains:
  - In a text file, on one line, you put the link to the video, and the title that you want it to be saved as after a semi-colon and space(; )
  - Script parses line by line and downloads each link, with the link and title
  - Uses youtube-dl and os module for the terminal
+
+<p>Some Markdown text with <span style="color:blue">some <em>blue</em> text</span>.</p>

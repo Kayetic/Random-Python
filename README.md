@@ -15,7 +15,7 @@ This repository will be used for small pieces of code, for temporary tasks, usua
  - Will let you input a hex number (eg. 2A)
  - Uses a dictionary and x16 multiplication to output the denary digit
 
-<h3 id="[1-this-is-my-header](https://github.com/Kayetic/Random-Python/tree/main/Fizz-Buzz)">FizzBuzz:</h3>
+<h3>FizzBuzz:</h3>
 
  - Come on, who doesn't know what this does...
  - But well, *sigh* here we go again

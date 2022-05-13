@@ -8,6 +8,7 @@ This repository will be used for small pieces of code, for temporary tasks, usua
  - Function to convert hexadecimal to denary
  - The good 'ol FizzBuzz game
  - Video downloading script
+ - Progress bar function
 
 (More will be added in the future)
 

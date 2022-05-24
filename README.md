@@ -12,10 +12,12 @@ This repository will be used for small pieces of code, for temporary tasks, usua
 
 (More will be added in the future)
 
-<h2>Hex to denary function:</h2>
+<h2>Hex ⇄ Denary function:</h2>
 
  - Will let you input a hex number (eg. 2A)
  - Uses a dictionary and x16 multiplication to output the denary digit
+ - Let user input denary number (between 1 and 255)
+ - Uses another dictionary and // to output a hex number
 
 <h2>FizzBuzz:</h2>
 

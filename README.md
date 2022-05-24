@@ -5,7 +5,7 @@ This repository will be used for small pieces of code, for temporary tasks, usua
 
 <b>Currently contains:</b>
 
- - Function to convert hexadecimal to denary
+ - Function to convert hexadecimal to denary, and vice versa
  - The good 'ol FizzBuzz game
  - Video downloading script
  - Progress bar function

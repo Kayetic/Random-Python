@@ -43,9 +43,13 @@ def denary_to_hex(denary_number):
     print(first_character + second_character + "\n")
 
 def hex_to_denary(hex_number):
-    digit1, digit2 = hex_number[0].lower(), hex_number[1].lower()
-    denary_digit1, denary_digit2 = dictionary_hex_to_decimal[f"{digit1}"], dictionary_hex_to_decimal[f"{digit2}"]
-    print((denary_digit1 * 16) + denary_digit2)
+    try:
+        digit1, digit2 = hex_number[0].lower(), hex_number[1].lower()
+        denary_digit1, denary_digit2 = dictionary_hex_to_decimal[f"{digit1}"], dictionary_hex_to_decimal[f"{digit2}"]
+        print((denary_digit1 * 16) + denary_digit2)
+    except IndexError:
+        digit1 = hex_number[0].lower()
+        print(dictionary_hex_to_decimal[f"{digit1}"])
 
 ### Main Menu ###
 while True:

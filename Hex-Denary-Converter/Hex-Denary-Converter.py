@@ -46,7 +46,8 @@ def denary_to_hex(denary_number):
 def hex_to_denary(hex_number):
     digit1, digit2 = hex_number[0].lower(), hex_number[1].lower()
     denary_digit1, denary_digit2 = (int(dictionary_hex_to_decimal[digit1]) * 16), (int(dictionary_hex_to_decimal[digit2]))
-    print(str(denary_digit1) + str(denary_digit2) + "\n")
+    # print(str(denary_digit1) + str(denary_digit2) + "\n")
+    print(digit1)
 
 ### Main Menu ###
 while True:

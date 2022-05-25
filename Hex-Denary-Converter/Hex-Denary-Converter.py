@@ -38,6 +38,9 @@ dictionary_denary_to_hex = {
 
 
 def denary_to_hex(denary_number):
+    if (int(denary_number) > 255) or (int(denary_number) < 1):
+        print("Number too large or too small, try again")
+        return None
     first_character = dictionary_denary_to_hex[int(denary_number) // 16]
     second_character = dictionary_denary_to_hex[int(denary_number) - (int(first_character) * 16)]
     print(first_character + second_character + "\n")
@@ -50,6 +53,8 @@ def hex_to_denary(hex_number):
     except IndexError:
         digit1 = hex_number[0].lower()
         print(dictionary_hex_to_decimal[f"{digit1}"])
+    except KeyError:
+        print("Incorrect format of hex number, try again\n")
 
 ### Main Menu ###
 while True:

@@ -36,18 +36,16 @@ dictionary_denary_to_hex = {
         15:"f"
     }
 
-print(dictionary_denary_to_hex[10])
 
 def denary_to_hex(denary_number):
     first_character = dictionary_denary_to_hex[int(denary_number) // 16]
-    second_character = dictionary_denary_to_hex[f"{int(denary_number) - (int(first_character) * 16)}"]
+    second_character = dictionary_denary_to_hex[int(denary_number) - (int(first_character) * 16)]
     print(first_character + second_character + "\n")
 
 def hex_to_denary(hex_number):
     digit1, digit2 = hex_number[0].lower(), hex_number[1].lower()
-    denary_digit1, denary_digit2 = (int(dictionary_hex_to_decimal[digit1]) * 16), (int(dictionary_hex_to_decimal[digit2]))
-    # print(str(denary_digit1) + str(denary_digit2) + "\n")
-    print(digit1)
+    denary_digit1, denary_digit2 = dictionary_hex_to_decimal["{}".format(digit1)]
+    print(denary_digit1)
 
 ### Main Menu ###
 while True:

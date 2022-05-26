@@ -28,12 +28,12 @@ dictionary_denary_to_hex = {
         7:"7",
         8:"8",
         9:"9",
-        10:"a",
-        11:"b",
-        12:"c",
-        13:"d",
-        14:"e",
-        15:"f"
+        10:"A",
+        11:"B",
+        12:"C",
+        13:"D",
+        14:"E",
+        15:"F"
     }
 
 
@@ -53,7 +53,7 @@ def hex_to_denary(hex_number):
         digit1, digit2 = hex_number[0].lower(), hex_number[1].lower()
         # Must use formatted string when accessing dictionary because it has to be a string that is looked-up
         denary_digit1, denary_digit2 = dictionary_hex_to_decimal[f"{digit1}"], dictionary_hex_to_decimal[f"{digit2}"]
-        print((denary_digit1 * 16) + denary_digit2)
+        print((denary_digit1 * 16) + denary_digit2.upper())
     elif len(hex_number) == 1:
         digit1 = hex_number[0].lower()
         denary_digit1 = int(dictionary_hex_to_decimal[f"{digit1}"])

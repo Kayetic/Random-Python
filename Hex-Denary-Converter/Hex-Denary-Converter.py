@@ -1,5 +1,9 @@
 import os, signal, sys
 
+def sigint_handler(signal, frame):
+    print ('KeyboardInterrupt is caught')
+    sys.exit(0)
+
 dictionary_hex_to_decimal = {
         "1":1,
         "2":2,
@@ -99,3 +103,5 @@ while True:
     else:
         print("Incorrect option")
         continue
+
+signal.signal(signal.SIGINT, sigint_handler)

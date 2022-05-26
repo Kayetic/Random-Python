@@ -42,29 +42,35 @@ def denary_to_hex(denary_number):
         int(denary_number)
     except ValueError:
         print("Not a valid number, try again")
-        return None        
+        return None
     if (int(denary_number) > 255) or (int(denary_number) < 1):
         print("Number too large or too small, try again")
         return None
     if int(denary_number) <= 16:
-        first_character = dictionary_denary_to_hex[f"{denary_number.lower()}"]
+        first_character = dictionary_denary_to_hex[denary_number]
+        # print(dictionary_denary_to_hex[1])
+        # print(type(dictionary_denary_to_hex[1]))
     else:
         first_character = dictionary_denary_to_hex[int(denary_number) // 16]
-        second_character = dictionary_denary_to_hex[int(denary_number) - (int(first_character) * 16)]
+        second_character = dictionary_denary_to_hex[int(denary_number) - (int(int(denary_number) // 16) * 16)]
         print(first_character + second_character + "\n")
 
 def hex_to_denary(hex_number):
     if len(hex_number) == 2:
         digit1, digit2 = hex_number[0].lower(), hex_number[1].lower()
         # Must use formatted string when accessing dictionary because it has to be a string that is looked-up
-        denary_digit1, denary_digit2 = dictionary_hex_to_decimal[f"{digit1}"], dictionary_hex_to_decimal[f"{digit2}"]
-        print((denary_digit1 * 16) + denary_digit2.upper())
+        try:
+            denary_digit1, denary_digit2 = dictionary_hex_to_decimal[f"{digit1}"], dictionary_hex_to_decimal[f"{digit2}"]
+            print((denary_digit1 * 16) + denary_digit2)
+        except KeyError:
+            print("Invalid hex character")
+            return None
     elif len(hex_number) == 1:
         digit1 = hex_number[0].lower()
         denary_digit1 = int(dictionary_hex_to_decimal[f"{digit1}"])
         print(denary_digit1 * 16)
     else:
-        print("Hex number too large or too small, try again")
+        print("Hex number too large, too small or invalid, try again")
         return None
 
 ### Main Menu ###

@@ -1,4 +1,4 @@
-import os
+import os, signal, sys
 
 dictionary_hex_to_decimal = {
         "1":1,

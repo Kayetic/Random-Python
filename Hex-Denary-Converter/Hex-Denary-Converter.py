@@ -38,6 +38,11 @@ dictionary_denary_to_hex = {
 
 
 def denary_to_hex(denary_number):
+    try:
+        int(denary_number)
+    except ValueError:
+        print("Not a valid number, try again")
+        return None        
     if (int(denary_number) > 255) or (int(denary_number) < 1):
         print("Number too large or too small, try again")
         return None

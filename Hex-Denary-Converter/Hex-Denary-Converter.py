@@ -2,6 +2,9 @@ import os
 from signal import signal, SIGINT
 
 def handler(signal_received, frame):
+    """
+    Capture SIGINT and exit cleanly
+    """
     # Handling any cleanup here
     print('\nSIGINT or CTRL-C detected. Exiting gracefully...')
     exit(0)

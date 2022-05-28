@@ -8,8 +8,10 @@ def progress_bar(completed_progress, total_progress):
     return full_bar
 
 
+
+### Testing the bar ###
 for x in range(1, 101):
     data = progress_bar(x, 100)
     print(data, end='\r', flush=True)
-    time.sleep(0.05)
+    time.sleep(0.025)
 print("\n")

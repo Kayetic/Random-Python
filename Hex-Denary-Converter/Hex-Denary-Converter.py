@@ -1,8 +1,10 @@
-import os, signal, sys
+import os, sys
+from signal import signal, SIGINT
 
-def sigint_handler(signal, frame):
-    print ('KeyboardInterrupt is caught')
-    sys.exit(0)
+def handler(signal_received, frame):
+    # Handling any cleanup here
+    print('\nSIGINT or CTRL-C detected. Exiting gracefully...')
+    exit(0)
 
 dictionary_hex_to_decimal = {
         "1":1,
@@ -80,6 +82,8 @@ def hex_to_denary(hex_number):
 
 ### Main Menu ###
 while True:
+    signal(SIGINT, handler)
+    print("\nHex-Denary Converter\n")
     os.system("clear")
     choice = input("""Choose an option:
 
@@ -103,5 +107,4 @@ while True:
     else:
         print("Incorrect option")
         continue
-
-signal.signal(signal.SIGINT, sigint_handler)
+    signal.signal(signal.SIGINT, sigint_handler)

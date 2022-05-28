@@ -2,8 +2,7 @@ import time
 
 def progress_bar(completed_progress, total_progress):
     symbol = "█"
-    percentage = int(completed_progress/total_progress*100)
-    percentage = str(percentage)
+    percentage = str(int(completed_progress/total_progress*100))
     to_print_amount = completed_progress
     to_print_dashes = total_progress - to_print_amount
     return "|" + symbol * to_print_amount + "-" * to_print_dashes + "|" + percentage + "%"

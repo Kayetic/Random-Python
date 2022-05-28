@@ -44,6 +44,11 @@ dictionary_denary_to_hex = {
 
 
 def denary_to_hex(denary_number):
+    """
+    Coneverts a denary number to hex
+    Number must be betweeb 1 and 255 inclusive
+    parameter denary_number: the number to convert
+    """
     try:
         int(denary_number)
     except ValueError:
@@ -61,6 +66,11 @@ def denary_to_hex(denary_number):
         print(first_character + second_character + "\n")
 
 def hex_to_denary(hex_number):
+    """
+    Converts a hex number to denary
+    Can accept a single character or two characters
+    parameter hex_number: the number to convert
+    """
     if len(hex_number) == 2:
         digit1, digit2 = hex_number[0].lower(), hex_number[1].lower()
         # Must use formatted string when accessing dictionary because it has to be a string that is looked-up
@@ -97,7 +107,7 @@ while True:
         temp = input("Press ENTER to continue ")
         continue
     elif choice == '2':
-        denary_number_inputted = input("Enter a denary number to convert to hex, between 1 and 255\n> ")
+        denary_number_inputted = input("Enter denary number to convert to hex, between 1 and 255\n> ")
         denary_to_hex(denary_number_inputted)
         temp = input("Press ENTER to continue ")
         continue

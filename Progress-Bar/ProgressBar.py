@@ -1,11 +1,11 @@
 import time
 
 def progress_bar(completed_progress, total_progress):
-    symbol = "█"
     percentage = str(int(completed_progress/total_progress*100))
-    to_print_amount = completed_progress
-    to_print_dashes = total_progress - to_print_amount
-    return "|" + symbol * to_print_amount + "-" * to_print_dashes + "|" + percentage + "%"
+    amount_of_symbol = completed_progress
+    amount_of_dashes = total_progress - amount_of_symbol
+    full_bar = "█" * amount_of_symbol + "-" * amount_of_dashes + " " + percentage + "%"
+    return full_bar
 
 
 for x in range(1, 101):

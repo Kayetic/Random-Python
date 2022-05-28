@@ -1,4 +1,4 @@
-import os, sys
+import os
 from signal import signal, SIGINT
 
 def handler(signal_received, frame):
@@ -107,4 +107,3 @@ while True:
     else:
         print("Incorrect option")
         continue
-    signal.signal(signal.SIGINT, sigint_handler)

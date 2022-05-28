@@ -1,4 +1,4 @@
-import os
+import os, sys
 from signal import signal, SIGINT
 
 def handler(signal_received, frame):
@@ -7,7 +7,7 @@ def handler(signal_received, frame):
     """
     # Handling any cleanup here
     print('\nSIGINT or CTRL-C detected. Exiting gracefully...')
-    exit(0)
+    sys.exit(0)
 
 dictionary_hex_to_decimal = {
         "1":1,

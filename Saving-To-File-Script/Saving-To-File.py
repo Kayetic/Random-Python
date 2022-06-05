@@ -1,21 +1,21 @@
-import json
+# function to append a line to the end of a file called "data.txt"
+
+def append_to_file(filename, line):
+    with open(filename, "a+") as file:
+        file.write(line + "\n")
+        file.close()
+
+
+# function to read the contents of a file called "data.txt"
+def read_file(filename):
+    with open(filename, "r") as file:
+        lines = file.readlines()
+        file.close()
+    return lines
 
 name = input("Enter your name: ")
 age = input("Enter your age: ")
 city = input("Enter your city: ")
-sex = input("Enter your sex: ")
+sex = input("E")
 
-data_to_save = {
-    "name": name,
-    "age": age,
-    "city": city,
-    "sex": sex
-}
-
-def save_data(data):
-    with open("data.json", "a+") as f:
-        json.dump(data, f, indent=4)
-
-
-save_data(data_to_save)
-
+data_to_add = 

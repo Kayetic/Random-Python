@@ -1,0 +1,16 @@
+{
+    "people" : [
+        {
+            "name": "Bartek",
+            "age": "16",
+            "city": "Chelmsford",
+            "sex": "M"
+        },
+        {
+            "name": "Aga",
+            "age": "10",
+            "city": "Chelmsford",
+            "sex": "F"
+        }
+    ]
+}

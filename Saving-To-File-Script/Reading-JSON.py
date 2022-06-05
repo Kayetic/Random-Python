@@ -1,5 +1,11 @@
 import json
 
+f = open('data.json')
+
+data = json.loads(f.read())
+
+print(data)
+
 name = input("Enter your name: ")
 age = input("Enter your age: ")
 city = input("Enter your city: ")
@@ -11,11 +17,3 @@ data_to_save = {
     "city": city,
     "sex": sex
 }
-
-def save_data(data):
-    with open("data.json", "a+") as f:
-        json.dump(data, f, indent=4)
-
-
-save_data(data_to_save)
-

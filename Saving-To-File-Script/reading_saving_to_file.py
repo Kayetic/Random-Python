@@ -18,6 +18,7 @@ def append_to_file(filename, line):
     with open(filename, 'a+', encoding='utf-8') as file:
         if is_file_empty(filename) is True:
             file.write(line)
+            file.close()
         else:
             file.write("\n" + line)
             file.close()
@@ -33,11 +34,28 @@ def read_file(filename):
         file.close()
     return lines
 
-name = input("Enter your name: ")
-age = input("Enter your age: ")
-city = input("Enter your city: ")
-sex = input("Enter your sex (M/F): ")
+# name = input("Enter your name: ")
+# age = input("Enter your age: ")
+# city = input("Enter your city: ")
+# sex = input("Enter your sex (M/F): ")
 
 ### Testing the functions ###
-data_to_append = f'{name}, {age}, {city}, {sex}'
-append_to_file("data.txt", data_to_append)
+# data_to_append = f'{name}, {age}, {city}, {sex}'
+# append_to_file("data.txt", data_to_append)
+
+names = []
+ages = []
+cities = []
+sexes = []
+
+data = read_file('data.txt')
+
+print(data)
+for i in range(len(data)):
+    name, age, city, sex = data[i].split(", ")
+    names.append(name); ages.append(age); cities.append(city); sexes.strip().append(sex)
+
+print(names)
+print(ages)
+print(cities)
+print(sexes)

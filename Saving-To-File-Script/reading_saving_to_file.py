@@ -52,9 +52,12 @@ data = read_file('data.txt')
 
 print(data)
 for i in range(len(data)):
+    temp_file = open('data.txt', 'r')
+    lines = temp_file.readlines()
+    for line, i in enumerate(range(len(lines))):
+        lines[i].strip()
     name, age, city, sex = data[i].split(", ")
-    names.append(name); ages.append(age); cities.append(city); sexes.strip().append(sex)
-
+    names.append(name); ages.append(age); cities.append(city); sexes.append(sex)
 print(names)
 print(ages)
 print(cities)

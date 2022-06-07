@@ -1,64 +1,24 @@
-def append_to_file(filename, line):
+
+def append_to_file(filename, data_to_write):
     """
-    Appending a line to the end of a file called 'data.txt'
+    Appending a line to the end of a file
     Parameters: filename (string) - the name of the file to be read
-    line (string) - the line to be appended to the file
+    data_to_write (string) - the line to be appended to the file
     """
-
-    def is_file_empty(filename):
-        """ Check if file is empty by reading first character in it"""
-        with open(filename, 'r', encoding='utf-8') as read_obj:
-            # Read first character
-            first_character = read_obj.read(1)
-            # If not fetched, then file is empty
-            if not first_character:
-                return True
-        return False
-
-    with open(filename, 'a+', encoding='utf-8') as file:
-        if is_file_empty(filename) is True:
-            file.write(line)
-            file.close()
-        else:
-            file.write("\n" + line)
-            file.close()
-
+    with open(filename, "a+", encoding='utf-8') as file_object:
+        file_object.seek(0)
+        reading_data = file_object.read(100)
+        if len(reading_data) > 0 :
+            file_object.write("\n")
+        file_object.write(data_to_write)
+        file_object.close()
 
 def read_file(filename):
     """
-    Opening a file and reading the contents into a variable called 'lines'
+    Opening a file and reading the contents into a variable called 'lines_data'
     Parameters:filename (string) - the name of the file to be read
     """
     with open(filename, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
+        lines_data = file.readlines()
         file.close()
-    return lines
-
-# name = input("Enter your name: ")
-# age = input("Enter your age: ")
-# city = input("Enter your city: ")
-# sex = input("Enter your sex (M/F): ")
-
-### Testing the functions ###
-# data_to_append = f'{name}, {age}, {city}, {sex}'
-# append_to_file("data.txt", data_to_append)
-
-names = []
-ages = []
-cities = []
-sexes = []
-
-data = read_file('data.txt')
-
-print(data)
-for i in range(len(data)):
-    temp_file = open('data.txt', 'r')
-    lines = temp_file.readlines()
-    for line, i in enumerate(range(len(lines))):
-        lines[i].strip()
-    name, age, city, sex = data[i].split(", ")
-    names.append(name); ages.append(age); cities.append(city); sexes.append(sex)
-print(names)
-print(ages)
-print(cities)
-print(sexes)
+    return lines_data

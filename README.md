@@ -9,6 +9,7 @@ This repository will be used for small pieces of code, for temporary tasks, usua
  - The good 'ol FizzBuzz game
  - Video downloading script
  - Progress bar function
+ - Writing and reading lines to a file
 
 (More will be added in the future)
 
@@ -42,3 +43,9 @@ This repository will be used for small pieces of code, for temporary tasks, usua
  - Currently the only parameters are elapsed progress and total progress
  - I am planning to add a suffix parameter, to easily label the progress
  - Currently, the progress bar does not override itself when printing
+
+<h2>Reading and writing to file function</h2>
+
+ - This is a function that will let you read and write data to a file
+ - Will take a line, or multiple lines and write that to a file
+ - Also allows you to read lines from a file

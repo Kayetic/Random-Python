@@ -16,3 +16,7 @@ for x in range(1, 101):
     print(data, end='\r', flush=True)
     time.sleep(0.025)
 print("\n")
+
+
+# Resets the colour of the terminal to default
+print(colorama.Fore.RESET)

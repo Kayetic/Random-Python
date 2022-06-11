@@ -1,16 +1,10 @@
 import tkinter as tk
-from signal import signal, SIGINT
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
 import os
 import shutil
 import platform
 import time
-
-def handler(signal_received, frame):
-    # Handling any cleanup here
-    print('\nCTRL-C or SIGINT detected. Exiting gracefully...')
-    exit(0)
 
 root = tk.Tk()
 root.withdraw()
@@ -33,7 +27,6 @@ def copy_files(file_name, source, destination):
 
 ### Main ###
 while True:
-    signal(SIGINT, handler)
     os.system("cls") if 'Windows' in platform.system() else os.system("clear")
     choice = input("""
 [1] Move files

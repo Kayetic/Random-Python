@@ -2,7 +2,6 @@ import tkinter as tk
 from signal import signal, SIGINT
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
-from rich.console import Console
 import os
 import shutil
 import platform
@@ -36,7 +35,6 @@ def copy_files(file_name, source, destination):
 while True:
     signal(SIGINT, handler)
     os.system("cls") if 'Windows' in platform.system() else os.system("clear")
-    console.print("Main Menu:", style="bold underline green")
     choice = input("""
 [1] Move files
 [2] Copy files

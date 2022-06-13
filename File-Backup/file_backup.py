@@ -1,11 +1,16 @@
 import tkinter as tk
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
+from rich.console import Console
 import os
 import shutil
 import platform
 import time
 
+# Used to be able to print with colours and styling
+console = Console()
+
+# Creates tkinter root and then removes the window to be able to use the askonefile dialogs
 root = tk.Tk()
 root.withdraw()
 
@@ -28,6 +33,8 @@ def copy_files(file_name, source, destination):
 ### Main ###
 while True:
     os.system("cls") if 'Windows' in platform.system() else os.system("clear")
+    console = Console()
+    console.print("File Backup script\n", style="bold underline green")
     choice = input("""
 [1] Move files
 [2] Copy files

@@ -54,6 +54,7 @@ This repository will be used for small pieces of code, for temporary tasks, usua
       - Will be expanded in the future
 
 <h2>File backup script</h2>
+
       - Script to let you copy or move contents of a folder to a new folder
       - Will take source folder path, and a destination folder path
       - Will copy/move all files in the source folder to the destination folder

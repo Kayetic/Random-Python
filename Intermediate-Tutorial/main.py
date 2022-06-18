@@ -7,14 +7,26 @@ class Person:
         self.age = age
         self.height = height
         Person.amount += 1
+
+    def myfunc(self):
+        print("Hello my name is " + self.name)
+
     def __str__(self):
-        return f"{self.name} is {self.age} years old and {self.height}cm tall."
+        return f"Name: {self.name}, Age: {self.age}, Height: {self.height}cm"
 
 
-person1 = Person("John", 20, 170)
-person2 = Person("Jane", 21, 160)
-person3 = Person("Jack", 22, 150)
+class Worker(Person):
+
+    def __init__(self, name, age, height, salary):
+        super(Worker, self).__init__(name, age, height)
+        self.salary = salary
+    
+    def calculate_yearly_salary(self):
+        return self.salary * 12
+    def __str__(self):
+        return super().__str__() + f", Salary: {self.salary}"
+
+person1 = Worker("John", 30, 175, 2000)
+person2 = Worker("Jane", 25, 165, 2500)
 
 print(person1)
-print(person2)
-print(person3)

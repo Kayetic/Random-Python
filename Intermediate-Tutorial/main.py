@@ -1,3 +1,5 @@
+import time
+
 class Person:
 
     amount = 0
@@ -28,5 +30,3 @@ class Worker(Person):
 
 person1 = Worker("John", 30, 175, 2000)
 person2 = Worker("Jane", 25, 165, 2500)
-
-print(person1)

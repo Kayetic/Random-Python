@@ -67,8 +67,10 @@ This repository will be used for small pieces of code, for temporary tasks, usua
 
       - Simple script to automatically download the latest release of Magisk 
       (from: https://github.com/topjohnwu/Magisk)
+      
       - Uses Github API to get the latest release of Magisk
             - Through requests module, gets browser_download_url from the JSON
             - Uses requests module again to download the file
             - Writes the downloaded content to a file with the appropriate name
-      - Creates a copy of the file with the same name, but with a .zip extention (to flash in android recovery)
+      - Creates a copy of the file with the same name, but with a .zip extention 
+      (to flash in android recovery)

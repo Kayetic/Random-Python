@@ -34,7 +34,8 @@ This repository will be used for small pieces of code, for temporary tasks, usua
 
 <h2>Video downloading script:</h2>
 
-      - In a text file, on one line, you put the link to the video, and the title that you want it to be saved as after a semi-colon and space(; )
+      - In a text file, on one line, you put the link to the video, and the title that you want it 
+      to be saved as after a semi-colon and space(; )
       - Script parses line by line and downloads each link, with the link and title
       - Uses youtube-dl and os module for the terminal
 
@@ -64,7 +65,8 @@ This repository will be used for small pieces of code, for temporary tasks, usua
 
 <h2>Automatic Magisk download script</h2>
 
-      - Simple script to automatically download the latest release of Magisk (from: https://github.com/topjohnwu/Magisk)
+      - Simple script to automatically download the latest release of Magisk 
+      (from: https://github.com/topjohnwu/Magisk)
       - Uses Github API to get the latest release of Magisk
             - Through requests module, gets browser_download_url from the JSON
             - Uses requests module again to download the file

@@ -11,6 +11,7 @@ This repository will be used for small pieces of code, for temporary tasks, usua
       - Progress bar function
       - Writing and reading lines to a file
       - File backup script
+      - Automatic Magisk downloader script
 
 (More will be added in the future)
 
@@ -60,3 +61,12 @@ This repository will be used for small pieces of code, for temporary tasks, usua
       - Will copy/move all files in the source folder to the destination folder
       - Will also copy/move all subfolders in the source folder to the destination folder
       - Currently only command line
+
+<h2>Automatic Magisk download script</h2>
+
+      - Simple script to automatically download the latest release of Magisk
+      - Uses Github API to get the latest release of Magisk
+            - Through requests module, gets browser_download_url from the JSON
+            - Uses requests module again to download the file
+            - Writes the downloaded content to a file with the appropriate name
+      - Creates a copy of the file with the same name, but with a .zip extention (to flash in android recovery)

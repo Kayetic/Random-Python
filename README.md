@@ -62,7 +62,7 @@ This repository will be used for small pieces of code, for temporary tasks, usua
       - Will also copy/move all subfolders in the source folder to the destination folder
       - Currently only command line
 
-<h2>Automatic Magisk download script</h2>
+<h2>Automatic [Magisk](https://github.com/topjohnwu/Magisk) download script</h2>
 
       - Simple script to automatically download the latest release of Magisk
       - Uses Github API to get the latest release of Magisk

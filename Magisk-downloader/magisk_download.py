@@ -12,7 +12,8 @@ text = download_url.split("/")
 filename = text[-1]
 print(filename)
     
-open(filename, "wb").write(github_response.content)
+# open(filename, "wb").write(github_response.content)
 print("Downloaded")
 print("\n")
 
+shutil.copyfile(filename, f"./{filename[:-4]}.zip")

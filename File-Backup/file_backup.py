@@ -25,7 +25,7 @@ def move_files(file_name, source, destination):
 # function to copy files
 def copy_files(file_name, source, destination):
     try:
-        shutil.copy(source + "\\" + file_name, destination)
+        shutil.copy2(source + "\\" + file_name, destination)
         print("File copied successfully")
     except shutil.Error as e:
         print("Error: %s" % e)

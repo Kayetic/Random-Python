@@ -17,7 +17,7 @@ root.withdraw()
 # function to move files
 def move_files(file_name, source, destination):
     try:
-        shutil.move(source + "/" + file_name, destination)
+        shutil.move(source + "\\" + file_name, destination)
         print("File moved successfully")
     except shutil.Error as e:
         print("Error: %s" % e)
@@ -25,7 +25,7 @@ def move_files(file_name, source, destination):
 # function to copy files
 def copy_files(file_name, source, destination):
     try:
-        shutil.copy(source + "/" + file_name, destination)
+        shutil.copy(source + "\\" + file_name, destination)
         print("File copied successfully")
     except shutil.Error as e:
         print("Error: %s" % e)
@@ -41,17 +41,23 @@ while True:
 [3] Exit
 >>> """)
     if choice == "1":
-        mb.showinfo("Move files", "Will move only the contents of the folder to the destination")
+        mb.showinfo("Move files", "Will only move the contents of the folder to the destination\n(Will not move the folder itself)\n \nPress OK to continue")
         source = fd.askdirectory(title="Select source directory")
         destination = fd.askdirectory(title="Select destination directory")
-        for file in os.listdir(source):
-            move_files(file, source, destination)
+        try:
+            for file in os.listdir(source):
+                move_files(file, source, destination)
+        except FileNotFoundError:
+            mb.showerror("Error", "Source directory not found")
     elif choice == "2":
-        mb.showinfo("Copy files", "Will copy only the contents of the folder to the destination")
+        mb.showinfo("Copy files", "Will only copy the contents of the folder to the destination\n\nIf the file already exists, it will be overwritten\n \nPress OK to continue")
         source = fd.askdirectory(title="Select source directory")
         destination = fd.askdirectory(title="Select destination directory")
-        for file in os.listdir(source):
-            copy_files(file, source, destination)
+        try:
+            for file in os.listdir(source):
+                copy_files(file, source, destination)
+        except FileNotFoundError:
+            mb.showerror("Error", "Source directory not found")
     elif choice == "3":
         print("Exiting...")
         time.sleep(0.35)

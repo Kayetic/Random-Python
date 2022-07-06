@@ -65,6 +65,14 @@ elif choice == "3":
     exit()
 elif choice == "custom":
     user_github_url = input("Enter the Github repo URL of the file(s) you would like to download\n: ")
-    print(user_github_url)
     new_string = generate_github_link(user_github_url)
-    print(new_string)
+    print("Downloading...")
+    response = requests.get(new_string)
+    data = response.json()
+    download_url = data["assets"][0]["browser_download_url"]
+    github_response = requests.get(download_url)
+    text = download_url.split("/")
+    filename = text[-1]
+    open(filename, "wb").write(github_response.content)
+    print(f"Downloaded: {filename}")
+    save_choice = input("\nWould you like to save this for later? (y/n)\n: ")

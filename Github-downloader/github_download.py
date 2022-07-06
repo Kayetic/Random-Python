@@ -1,8 +1,14 @@
+from signal import signal, SIGINT
 import requests
 import json
 import shutil
 import platform
 import os
+
+def handler(signal_received, frame):
+    # Handling any cleanup here
+    print('\nCTRL-C or SIGINT detected. Exiting gracefully...')
+    exit(0)
 
 def generate_github_link(repo_url):
     return repo_url.replace("github.com", "api.github.com/repos") + "/releases/latest"
@@ -31,14 +37,21 @@ def read_file(filename):
         file.close()
     return lines_data
 
+signal(SIGINT, handler)
 os.system("cls") if 'Windows' in platform.system() else os.system("clear")
-choice = input("""Choose what you would like to download
+print("""Choose what you would like to download
 [1] Magisk (Manager + Recovery Flashable Zip)
 [2] LSPosed (Zygisk)
 [3] Universal auth files
+Saved links:""")
+lines = read_file("saved_links.txt")
+for i in range(len(lines)):
+    split_lines = lines[i].split("|")
+    print(f"[{i+4}] {split_lines[0]}")
+print("""
 [custom] Add custom URL
 [exit] Exit""")
-lines = read_file("saved_links.txt")
+choice = input(">>> ")
 if choice == "1":
     response = requests.get('https://api.github.com/repos/topjohnwu/Magisk/releases/latest')
     data = response.json()
@@ -106,3 +119,23 @@ elif choice == "custom":
         append_to_file("saved_links.txt", data_to_save)
         print("\nSaved for later")
     temp = input("\nPress ENTER to exit\n")
+    exit()
+elif choice == "exit":
+    exit()
+elif int(choice) > 3:
+    links = []
+    lines = read_file("saved_links.txt")
+    for i in range(len(lines)):
+        split_lines = lines[i].split("|")
+        links.append(split_lines[1].strip())
+    print(f"Downloading from: {links[int(choice)-4]}")
+    response = requests.get(links[int(choice)-4])
+    data = response.json()
+    download_url = data["assets"][0]["browser_download_url"]
+    github_response = requests.get(download_url)
+    text = download_url.split("/")
+    filename = text[-1]
+    open(filename, "wb").write(github_response.content)
+    print(f"Downloaded: {filename}")
+    temp = input("\nPress ENTER to exit\n")
+    exit()

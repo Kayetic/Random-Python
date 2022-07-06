@@ -4,11 +4,15 @@ import shutil
 import platform
 import os
 
+def generate_github_link(repo_url):
+    return repo_url.replace("github.com", "api.github.com/repos") + "/releases/latest"
+
 os.system("cls") if 'Windows' in platform.system() else os.system("clear")
 choice = input("""Choose what you would like to download
 [1] Magisk (Manager + Recovery Flashable Zip)
 [2] LSPosed (Zygisk)
 [3] Universal auth files
+[custom] Add custom URL
 [exit] Exit
 >>> """)
 if choice == "1":
@@ -57,3 +61,10 @@ elif choice == "3":
     open(filename1, "wb").write(github_response1.content)
     open(filename2, "wb").write(github_response2.content)
     print("Downloaded Universal Auth files")
+    temp = input("\nPress ENTER to exit\n")
+    exit()
+elif choice == "custom":
+    user_github_url = input("Enter the Github repo URL of the file(s) you would like to download\n: ")
+    print(user_github_url)
+    new_string = generate_github_link(user_github_url)
+    print(new_string)

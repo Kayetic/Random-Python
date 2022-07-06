@@ -41,3 +41,19 @@ elif choice == "2":
     print("Downloaded LSPosed")
     temp = input("\nPress ENTER to exit\n")
     exit()
+elif choice == "3":
+    response = requests.get('https://api.github.com/repos/null-dev/UniversalAuth/releases/latest')
+    data = response.json()
+    download_url1 = data["assets"][0]["browser_download_url"]
+    download_url2 = data["assets"][1]["browser_download_url"]
+    github_response1 = requests.get(download_url1)
+    github_response2 = requests.get(download_url2)
+    text1 = download_url1.split("/")
+    text2 = download_url2.split("/")
+    filename1 = text1[-1]
+    filename2 = text2[-1]
+    print(f"Downloading: {filename1}")
+    print(f"Downloading: {filename2}")
+    open(filename1, "wb").write(github_response1.content)
+    open(filename2, "wb").write(github_response2.content)
+    print("Downloaded Universal Auth files")

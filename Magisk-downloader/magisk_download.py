@@ -7,14 +7,38 @@ import os
 def generate_github_link(repo_url):
     return repo_url.replace("github.com", "api.github.com/repos") + "/releases/latest"
 
+def append_to_file(filename, data_to_write):
+    """
+    Appending a line to the end of a file
+    Parameters: filename (string) - the name of the file to be read
+    data_to_write (string) - the line to be appended to the file
+    """
+    with open(filename, "a+", encoding='utf-8') as file_object:
+        file_object.seek(0)
+        reading_data = file_object.read(100)
+        if len(reading_data) > 0 :
+            file_object.write("\n")
+        file_object.write(data_to_write)
+        file_object.close()
+
+def read_file(filename):
+    """
+    Opening a file and reading the contents into a variable called 'lines_data'
+    Parameters:filename (string) - the name of the file to be read
+    """
+    with open(filename, 'r', encoding='utf-8') as file:
+        lines_data = file.readlines()
+        file.close()
+    return lines_data
+
 os.system("cls") if 'Windows' in platform.system() else os.system("clear")
 choice = input("""Choose what you would like to download
 [1] Magisk (Manager + Recovery Flashable Zip)
 [2] LSPosed (Zygisk)
 [3] Universal auth files
 [custom] Add custom URL
-[exit] Exit
->>> """)
+[exit] Exit""")
+lines = read_file("saved_links.txt")
 if choice == "1":
     response = requests.get('https://api.github.com/repos/topjohnwu/Magisk/releases/latest')
     data = response.json()
@@ -76,3 +100,9 @@ elif choice == "custom":
     open(filename, "wb").write(github_response.content)
     print(f"Downloaded: {filename}")
     save_choice = input("\nWould you like to save this for later? (y/n)\n: ")
+    if save_choice == "y":
+        name = input("\nWhat do you want to save the file as (to show in the list)?\n: ")
+        data_to_save = name + "|" + new_string
+        append_to_file("saved_links.txt", data_to_save)
+        print("\nSaved for later")
+    temp = input("\nPress ENTER to exit\n")

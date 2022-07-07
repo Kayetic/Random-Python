@@ -1,0 +1,2 @@
+name,link
+Autohotkey setup,https://api.github.com/repos/Lexikos/AutoHotkey_L/releases/latest

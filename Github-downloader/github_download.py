@@ -1,9 +1,10 @@
 from signal import signal, SIGINT
-import requests
-import json
+from external_modules import writing_data_csv, reading_data_csv
+import os
 import shutil
 import platform
-import os
+import requests
+import json
 
 def handler(signal_received, frame):
     # Handling any cleanup here
@@ -32,7 +33,7 @@ def read_file(filename):
     Opening a file and reading the contents into a variable called 'lines_data'
     Parameters:filename (string) - the name of the file to be read
     """
-    with open(filename, 'r', encoding='utf-8') as file:
+    with open(filename, 'r+', encoding='utf-8') as file:
         lines_data = file.readlines()
         file.close()
     return lines_data
@@ -44,10 +45,10 @@ print("""Choose what you would like to download
 [2] LSPosed (Zygisk)
 [3] Universal auth files
 Saved links:""")
-lines = read_file("saved_links.txt")
-for i in range(len(lines)):
-    split_lines = lines[i].split("|")
-    print(f"[{i+4}] {split_lines[0]}")
+read_headers, read_rows = reading_data_csv("saved_links.txt")
+for i in range(len(read_rows)):
+    name, link = read_rows[i].split(",")
+    print(f"[{i+4}] {name}")
 print("""
 [custom] Add custom URL
 [exit] Exit""")
@@ -60,7 +61,7 @@ if choice == "1":
     text = download_url.split("/")
     filename = text[-1]
     print(f"Downloading: {filename}")
-        
+
     open(filename, "wb").write(github_response.content)
     print("\nDownloaded Magisk files")
     print("\n")
@@ -115,21 +116,32 @@ elif choice == "custom":
     save_choice = input("\nWould you like to save this for later? (y/n)\n: ")
     if save_choice == "y":
         name = input("\nWhat do you want to save the file as (to show in the list)?\n: ")
-        data_to_save = name + "|" + new_string
-        append_to_file("saved_links.txt", data_to_save)
+        data_to_save = []
+        data_to_save.append(name)
+        data_to_save.append(new_string)
+        writing_data_csv("saved_links.txt", data_to_save)
         print("\nSaved for later")
     temp = input("\nPress ENTER to exit\n")
     exit()
 elif choice == "exit":
     exit()
 elif int(choice) > 3:
-    links = []
-    lines = read_file("saved_links.txt")
-    for i in range(len(lines)):
-        split_lines = lines[i].split("|")
-        links.append(split_lines[1].strip())
-    print(f"Downloading from: {links[int(choice)-4]}")
-    response = requests.get(links[int(choice)-4])
+    read_header1, read_rows1 = reading_data_csv("saved_links.txt")
+    for i in range(len(read_rows1)):
+        name, link = read_rows1[i].split(",")
+        if int(choice) == i+4:
+            print(f"Downloading: {name}")
+            github_raw_data = requests.get(link)
+            data = github_raw_data.json()
+            download_url = data["assets"][0]["browser_download_url"]
+            filename = data["assets"][0]["name"]
+            github_response = requests.get(download_url)
+            open(filename, "wb").write(github_response.content)
+            print(f"Downloaded: {filename}")
+            temp = input("\nPress ENTER to exit\n")
+            exit()
+    print(f"Downloading from: {link[int(choice)-4]}")
+    response = requests.get(link[int(choice)-4])
     data = response.json()
     download_url = data["assets"][0]["browser_download_url"]
     github_response = requests.get(download_url)

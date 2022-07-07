@@ -68,7 +68,7 @@ if choice == "1":
 
     shutil.copyfile(filename, f"./{filename[:-4]}.zip")
 
-    temp = input("\nPress ENTER to exit\n")
+    temp = input("\nPress \033[1mENTER\033[0m to exit\n")
     exit()
 elif choice == "2":
     response = requests.get('https://api.github.com/repos/LSPosed/LSPosed/releases/latest')
@@ -81,7 +81,7 @@ elif choice == "2":
 
     open(filename, "wb").write(github_response.content)
     print("Downloaded LSPosed")
-    temp = input("\nPress ENTER to exit\n")
+    temp = input("\nPress \033[1mENTER\033[0m to exit\n")
     exit()
 elif choice == "3":
     response = requests.get('https://api.github.com/repos/null-dev/UniversalAuth/releases/latest')
@@ -99,7 +99,7 @@ elif choice == "3":
     open(filename1, "wb").write(github_response1.content)
     open(filename2, "wb").write(github_response2.content)
     print("Downloaded Universal Auth files")
-    temp = input("\nPress ENTER to exit\n")
+    temp = input("\nPress \033[1mENTER\033[0m to exit\n")
     exit()
 elif choice == "custom":
     user_github_url = input("Enter the Github repo URL of the file(s) you would like to download\n: ")
@@ -121,7 +121,7 @@ elif choice == "custom":
         data_to_save.append(new_string)
         writing_data_csv("saved_links.txt", data_to_save)
         print("\nSaved for later")
-    temp = input("\nPress ENTER to exit\n")
+    temp = input("\nPress \033[1mENTER\033[0m to exit\n")
     exit()
 elif choice == "exit":
     exit()
@@ -138,7 +138,7 @@ elif int(choice) > 3:
             github_response = requests.get(download_url)
             open(filename, "wb").write(github_response.content)
             print(f"Downloaded: {filename}")
-            temp = input("\nPress ENTER to exit\n")
+            temp = input("\nPress \033[1mENTER\033[0m to exit\n")
             exit()
     print(f"Downloading from: {link[int(choice)-4]}")
     response = requests.get(link[int(choice)-4])
@@ -149,5 +149,5 @@ elif int(choice) > 3:
     filename = text[-1]
     open(filename, "wb").write(github_response.content)
     print(f"Downloaded: {filename}")
-    temp = input("\nPress ENTER to exit\n")
+    temp = input("\nPress \033[1mENTER\033[0m to exit\n")
     exit()

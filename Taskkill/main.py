@@ -26,7 +26,7 @@ if choice == "y":
     for program in programs:
         temp.write(program + "\n")
     temp.close()
-    print("Program added to blacklist.")
+    print(f"Added {program_name} to the blacklist")
 
 while True:
     for program in psutil.process_iter():

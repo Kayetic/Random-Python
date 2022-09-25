@@ -1,6 +1,5 @@
 import requests
-import random
-import string
+import time
 
 
 available_names = []
@@ -8,7 +7,7 @@ available_names = []
 #function to read names from file into array
 def read_names():
     names = []
-    with open("names.txt") as f:
+    with open("Name-Sniper/names_to_test.txt") as f:
         for line in f:
             names.append(line.strip())
     return names
@@ -27,6 +26,7 @@ def check_username(username):
 #check if the username is available
 for i in range(1300):
     check_username(names_to_check[i])
+    time.sleep(0.5)
 
 print("Done\n")
 print("Available names: " + str(len(available_names)))

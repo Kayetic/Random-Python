@@ -24,7 +24,11 @@ def check_username(username):
 
 def generate_username():
     username = letter_random_string()
-    check_username(username)
+    try:
+        check_username(username)
+    except TypeError:
+        print("Error: " + r.status_code)
+        pass
 
 def letter_random_string():
     letters = string.ascii_lowercase

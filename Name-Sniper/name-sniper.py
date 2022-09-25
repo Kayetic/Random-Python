@@ -5,6 +5,17 @@ import string
 
 available_names = []
 
+#function to read names from file into array
+def read_names():
+    names = []
+    with open("names.txt") as f:
+        for line in f:
+            names.append(line.strip())
+    return names
+
+names_to_check = read_names()
+print(read_names())
+
 def check_username(username):
     request_data = requests.get("https://api.mojang.com/users/profiles/minecraft/" + username)
     if request_data.status_code == 204:
@@ -14,35 +25,9 @@ def check_username(username):
         print("Username " + username + " is taken")
 
 #check if the username is available
-check_username("cat")
+for i in range(1300):
+    check_username(names_to_check[i])
 
-#define a function to generate a string of random 3 letters
-
-
-
-# def generate_username():
-#     username = letter_random_string()
-#     try:
-#         check_username(username)
-#     except TypeError:
-#         print("Error: " + r.status_code)
-#         pass
-
-# def letter_random_string():
-#     letters = string.ascii_lowercase
-#     return ''.join(random.choice(letters) for i in range(3))
-
-
-# for i in range(999):
-#     generate_username() + i
-
-# print(available_names)
-
-# def write_to_file():
-#     with open("available_names.txt", "w") as f:
-#         for name in available_names:
-#             f.write(name + "\n")
-
-# write_to_file()
-
-print("Done")
+print("Done\n")
+print("Available names: " + str(len(available_names)))
+print(available_names)

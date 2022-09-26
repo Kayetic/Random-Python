@@ -20,8 +20,8 @@ print(read_names())
 
 def check_username(username):
     """
-    Sends a request to the minecraft api to check if a username is available and returns True if is available and False if not
-    parameter username: the username to check
+    Sends a request to the minecraft api to check if a username available
+    parameters: username (string) - the username to check
     """
     request_data = requests.get("https://api.mojang.com/users/profiles/minecraft/" + username)
     if request_data.status_code == 204:
@@ -31,6 +31,12 @@ def check_username(username):
         return False
 
 def check_all_names(check_list, amount, delay):
+    """
+    Will check all names in the list and print the available ones
+    parameters: check_list (list) - the list of names to check
+                amount (int) - the amount of names to check
+                delay (int) - the delay between each request
+    """
     for i in range(int(amount)):
         check_username(check_list[i])
         time.sleep(float(delay))

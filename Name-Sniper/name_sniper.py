@@ -4,6 +4,13 @@ import requests
 
 available_names = []
 
+def progress_bar(current, total, bar_length=20):
+    percent = float(current) * 100 / total
+    arrow = '-' * int(percent / 100 * bar_length - 1) + '>'
+    spaces = ' ' * (bar_length - len(arrow))
+
+    print('Progress: [%s%s] %d %%' % (arrow, spaces, percent), end='\r')
+
 #function to read names from file into array
 def read_names():
     """
@@ -16,7 +23,6 @@ def read_names():
     return names
 
 names_to_check = read_names()
-print(read_names())
 
 def check_username(username):
     """
@@ -41,6 +47,35 @@ def check_all_names(check_list, amount, delay):
         check_username(check_list[i])
         time.sleep(float(delay))
 
+
+
+## Main Program
+while True:
+    option = input("Would you like to check all names in the list or a specific amount? (all/amount): ")
+    if option == "all":
+        check_all_names(names_to_check, len(names_to_check), 0.5)
+        break
+    elif option == "amount":
+        amount = input("How many names would you like to check?: ")
+        delay = input("How long would you like to wait between each request?: ")
+        #progress bar
+        for i in range(int(amount)):
+            progress_bar(i, int(amount))
+            check_username(names_to_check[i])
+            time.sleep(float(delay))
+        break
+    else:
+        print("Invalid option")
+        temp = input("Press enter to continue")
+
 print("Done\n")
 print("Available names: " + str(len(available_names)))
 print(available_names)
+
+if len(available_names) > 0:
+    print("Would you like to save the available names to a file? (y/n)")
+    save = input()
+    if save == "y":
+        with open("Name-Sniper/available_names.txt", "w", encoding="utf-8") as f:
+            for name in available_names:
+                f.write(name + "\r")

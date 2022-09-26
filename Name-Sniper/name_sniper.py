@@ -43,8 +43,8 @@ def check_all_names(check_list, amount, delay):
                 amount (int) - the amount of names to check
                 delay (int) - the delay between each request
     """
-    for i in range(int(amount)):
-        check_username(check_list[i])
+    for x in range(int(amount)):
+        check_username(check_list[x])
         time.sleep(float(delay))
 
 

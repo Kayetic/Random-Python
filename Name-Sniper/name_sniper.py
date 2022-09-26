@@ -60,7 +60,7 @@ while True:
         delay = input("How long would you like to wait between each request?: ")
         #progress bar
         for i in range(int(amount)):
-            progress_bar(i, int(amount))
+            progress_bar(i, int(amount) - 1)
             check_username(names_to_check[i])
             time.sleep(float(delay))
         break

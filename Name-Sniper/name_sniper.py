@@ -1,9 +1,13 @@
 import time
 import requests
-
-
+from english_words import english_words_lower_set
 
 available_names = []
+
+# four_letter_words = [word for word in english_words_lower_set if len(word) == 4]
+# with open("Name-Sniper/four_letter_words.txt", "w", encoding="utf-8") as f:
+#     for word in four_letter_words:
+#         f.write(word + "\n")
 
 def progress_bar(current, total, bar_length=20):
     """
@@ -19,17 +23,17 @@ def progress_bar(current, total, bar_length=20):
     print('Progress: [%s%s] %d %%' % (arrow, spaces, percent), end='\r')
 
 #function to read names from file into array
-def read_names():
+def read_names(filename):
     """
     Reads names from file into array
     """
     names = []
-    with open("Name-Sniper/names_to_test.txt", encoding="utf-8") as f:
+    with open(f"Name-Sniper/{filename}", encoding="utf-8") as f:
         for line in f:
             names.append(line.strip())
     return names
 
-names_to_check = read_names()
+names_to_check = read_names("four_letter_words.txt")
 
 def check_username(username):
     """
@@ -54,6 +58,11 @@ def check_all_names(check_list, amount, delay):
         check_username(check_list[x])
         time.sleep(float(delay))
 
+
+
+# for i in range(len(english_words_lower_set)):
+#     check_all_names(four_letter_words, 10, 0.1)
+#     progress_bar(i, len(english_words_lower_set))
 
 
 ## Main Program

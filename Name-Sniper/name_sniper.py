@@ -2,6 +2,7 @@ import time
 import requests
 
 
+
 available_names = []
 
 def progress_bar(current, total, bar_length=20):
@@ -59,7 +60,9 @@ def check_all_names(check_list, amount, delay):
 while True:
     option = input("Would you like to check all names in the list or a specific amount? (all/amount): ")
     if option == "all":
-        check_all_names(names_to_check, len(names_to_check), 0.5)
+        for name in names_to_check:
+            check_username(name)
+            progress_bar(names_to_check.index(name), len(names_to_check))
         break
     elif option == "amount":
         amount = input("How many names would you like to check?: ")

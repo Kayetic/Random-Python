@@ -6,8 +6,11 @@ available_names = []
 
 #function to read names from file into array
 def read_names():
+    """
+    Reads names from file into array
+    """
     names = []
-    with open("Name-Sniper/names_to_test.txt") as f:
+    with open("Name-Sniper/names_to_test.txt", encoding="utf-8") as f:
         for line in f:
             names.append(line.strip())
     return names
@@ -16,17 +19,21 @@ names_to_check = read_names()
 print(read_names())
 
 def check_username(username):
+    """
+    Sends a request to the minecraft api to check if a username is available and returns True if is available and False if not
+    parameter username: the username to check
+    """
     request_data = requests.get("https://api.mojang.com/users/profiles/minecraft/" + username)
     if request_data.status_code == 204:
-        print("Username " + username + " is available")
         available_names.append(username)
+        return True
     elif request_data.status_code == 200:
-        print("Username " + username + " is taken")
+        return False
 
-#check if the username is available
-for i in range(1300):
-    check_username(names_to_check[i])
-    time.sleep(0.5)
+def check_all_names(check_list, amount, delay):
+    for i in range(int(amount)):
+        check_username(check_list[i])
+        time.sleep(float(delay))
 
 print("Done\n")
 print("Available names: " + str(len(available_names)))

@@ -2,6 +2,7 @@ import time
 import colorama
 
 def progress_bar(completed_progress, total_progress, color=colorama.Fore.YELLOW):
+    """Prints a progress bar to the console."""
     percentage = str(int(completed_progress/total_progress*100))
     amount_of_symbol = completed_progress
     amount_of_dashes = total_progress - amount_of_symbol

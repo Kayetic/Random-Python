@@ -1,6 +1,12 @@
-listOfNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+# pseudocode:
 
-num = 0
-while num <= len(listOfNumbers) - 1:
-    print(listOfNumbers[num])
-    num = num + 3
+def quiz_game():
+    #score = 0
+    #for i in range(10):
+        #display question and possible answers
+        #get user input
+        #if user input is correct:
+            #score += 1
+        #if user input is incorrect:
+            #score += 0
+        

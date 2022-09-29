@@ -1,4 +1,5 @@
 import time
+import os
 
 def quiz_game():
     questions = ["What is the capital of France?", "How many legs does a spider have?", "What is the current US president?", "What is the capital of the US?", "What was Meta Platforms Inc formerly known as?"]
@@ -7,12 +8,12 @@ def quiz_game():
     
     score = 0
     for i in range(len(questions)):
-        print("\n" + questions[i])
-        print("Possible answers:")
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(questions[i])
+        print("Possible answers:\n")
         for possible_answer in possible_answers[i]:
             print(possible_answer)
-        # print(possible_answers[i])
-        user_answer = input("Enter the answer: ")
+        user_answer = input("\nEnter the answer: ")
         if user_answer == correct_answers[i]:
             print("Correct!")
             time.sleep(0.75)

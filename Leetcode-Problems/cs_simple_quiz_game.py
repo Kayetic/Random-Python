@@ -7,7 +7,7 @@ def quiz_game():
     
     score = 0
     for i in range(len(questions)):
-        print(questions[i])
+        print("\n" + questions[i])
         print("Possible answers:")
         for possible_answer in possible_answers[i]:
             print(possible_answer)

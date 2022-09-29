@@ -20,5 +20,5 @@ def quiz_game():
             continue
     return score
 
-print("Score:")
-print(quiz_game())
+final_score = quiz_game()
+print("Score: " + str(final_score))

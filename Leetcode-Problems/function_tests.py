@@ -1,6 +1,6 @@
-def taking_input_test():
-    user_input = input("Enter your name: ")
-    print("Hello " + user_input)
-    return user_input
+listOfNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-taking_input_test()
+num = 0
+while num < len(listOfNumbers):
+    print(listOfNumbers[num])
+    num = num + 1

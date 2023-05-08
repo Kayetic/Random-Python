@@ -1,12 +1,15 @@
 import os
 
 to_go = 0
+# This code reads a file line by line and counts the number of lines.
+
 try:
-    readingLines = open("filmy.txt", encoding="utf-8").readlines()
+    file_lines = open("filmy.txt", encoding="utf-8").readlines()
 except FileNotFoundError:
     print("The 'filmy.txt' file does not exist, please create one.")
-number_of_lines = len(readingLines)
+number_of_lines = len(file_lines)
 print(f"{number_of_lines} to download.\n")
+
 
 def externalVideo():
     to_go = number_of_lines
@@ -27,7 +30,9 @@ def externalVideo():
             links.append(link)
             names.append(name)
         except ValueError:
-            print(f"\033[1mERROR:\033[0m Invalid films file syntax detected at line: \033[1m{int(iteration) + 1}\033[0m of filmy.txt file")
+            print(
+                f"\033[1mERROR:\033[0m Invalid films file syntax detected at line: \033[1m{int(iteration) + 1}\033[0m of filmy.txt file"
+            )
     for individual_name in range(len(names)):
         names[individual_name] = names[individual_name] + ".mp4"
     print(f"{names}\n")
@@ -35,12 +40,17 @@ def externalVideo():
     for i in range(len(links)):
         os.system(f'yt-dlp {links[i]} -o "{names[i]}"')
 
+
 def youtubeVideo(ytlink):
     os.system(f'yt-dlp -o "%(title)s.%(ext)s" {ytlink}')
 
+
 # Main menu
 
-choice_menu = input("Choose:\n1 - For video from outside sources\n2 - For Youtube videos and playlists\n>>> ")
+
+choice_menu = input(
+    "Choose:\n1 - For video from outside sources\n2 - For Youtube videos and playlists\n>>> "
+)
 if choice_menu == "1":
     externalVideo()
 elif choice_menu == "2":
